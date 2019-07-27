@@ -17,7 +17,14 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
-
+    
+    
+    // public function feed_tasklist()
+    // {
+    //    $follow_user_ids = $this->followings()->pluck('users.id')->toArray();
+    //    $follow_user_ids[] = $this->id;
+    //    return Tasklist::whereIn('user_id', $follow_user_ids);
+    //}
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -26,4 +33,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
