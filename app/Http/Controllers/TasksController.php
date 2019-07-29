@@ -95,13 +95,12 @@ class tasksController extends Controller
             'status' => 'required|max:10',   // 追加
             'content' => 'required|max:191',
         ]);
-        
-        if (\Auth::id() === $micropost->user_id) {
+    
         $task = Task::find($id);
         $task->status = $request->status;    // 追加
         $task->content = $request->content;
         $task->save();
-        }
+    
         return redirect('/');
     }
 
@@ -109,7 +108,7 @@ class tasksController extends Controller
     {
         $task = Task::find($id);
         
-        if (\Auth::id() === $micropost->user_id) {
+        if (\Auth::id() === $task->user_id) {
         $task->delete();
         }
         return redirect('/');
