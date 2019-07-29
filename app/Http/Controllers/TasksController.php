@@ -37,6 +37,7 @@ class tasksController extends Controller
         return view('tasks.create', [
             'task' => $task,
         ]);}
+        return redirect('/');
     }
 
 
@@ -52,8 +53,7 @@ class tasksController extends Controller
             'content' => $request->content,
             'status' => $request->status,
              
-        ]);
-        }
+        ]);}
         
         $task = new Task;
         $task ->status = $request->status;    // 追加
@@ -71,8 +71,8 @@ class tasksController extends Controller
         if (\Auth::id() === $task->user_id) {
         return view('tasks.show', [
             'task' => $task,
-        ]);
-        }
+        ]);}
+        return redirect('/');
     }
 
 
@@ -83,8 +83,8 @@ class tasksController extends Controller
         if (\Auth::id() === $task->user_id) {
         return view('tasks.edit', [
             'task' => $task,
-        ]);
-        }
+        ]);}
+        return redirect('/');
     }
 
 
@@ -101,7 +101,6 @@ class tasksController extends Controller
         $task->content = $request->content;
         $task->save();
         }
-        
         return redirect('/');
     }
 
@@ -113,7 +112,6 @@ class tasksController extends Controller
         if (\Auth::id() === $task->user_id) {
             $task->delete();
         }
-
         return redirect('/');
     }
 }
