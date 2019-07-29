@@ -16,7 +16,7 @@ Route::resource('tasks', 'TasksController');
 
 
 // ユーザ機能 ログイン認証付きのルーティング
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => 'auth'], function () {
 Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
 Route::resource('tasks', 'TasksController', ['only' => ['store', 'destroy']]);
 });

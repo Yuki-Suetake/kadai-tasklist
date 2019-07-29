@@ -15,7 +15,7 @@ class Controller extends BaseController
         $count_tasks = $user->tasks()->count();
 
         return [
-            'count_taskss' => $count_tasks,
+            'count_tasks' => $count_tasks,
         ];
     }
 }
