@@ -65,11 +65,14 @@ class tasksController extends Controller
     {
         $task = Task::find($id);
 
-        return view('tasks.show', [
+        if (\Auth::id() === $task->user_id) {
+            return view('tasks.show', [
             'task' => $task,
         ]);
         return redirect('/');
-    }
+        }
+            
+        }
 
 
     public function edit($id)
@@ -103,8 +106,10 @@ class tasksController extends Controller
     public function destroy($id)
     {
         $task = Task::find($id);
+    if (\Auth::id() === $micropost->user_id) {
         $task->delete();
 
         return redirect('/');
+    }
     }
 }
