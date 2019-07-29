@@ -105,6 +105,6 @@ class tasksController extends Controller
             $task->delete();
         }
 
-        return redirect();
+        return redirect('/');
     }
 }
