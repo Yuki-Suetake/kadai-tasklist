@@ -37,7 +37,7 @@ class tasksController extends Controller
         return view('tasks.create', [
             'task' => $task,
         ]);}
-        return redirect('/');
+        return view('welcome'); //return redirect('/');
     }
 
 
@@ -59,7 +59,7 @@ class tasksController extends Controller
         $task ->status = $request->status;    // 追加
         $task ->content = $request->content;
 
-        return redirect('/');
+        return view('welcome'); //return redirect('/');
     }    
 
 
@@ -72,7 +72,7 @@ class tasksController extends Controller
         return view('tasks.show', [
             'task' => $task,
         ]);}
-        return redirect('/');
+        return view('welcome');  //return redirect('/');
     }
 
 
@@ -84,7 +84,7 @@ class tasksController extends Controller
         return view('tasks.edit', [
             'task' => $task,
         ]);}
-        return redirect('/');
+        return view('welcome');  //return redirect('/');
     }
 
 
@@ -101,7 +101,7 @@ class tasksController extends Controller
         $task->content = $request->content;
         $task->save();
         }
-        return redirect('/');
+        return view('welcome');  //return redirect('/');
     }
 
 
